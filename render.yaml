@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: fleetflow-vehicle-management
+    runtime: node
+    plan: free
+    buildCommand: unzip -oq fleetflow-portal-cloud.zip -d hosted-source && cd hosted-source && npm install --omit=dev
+    startCommand: cd hosted-source && npm start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PROVIDER
+        value: postgresql
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: BOOTSTRAP_TOKEN
+        sync: false
