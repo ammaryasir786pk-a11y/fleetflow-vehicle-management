@@ -18,9 +18,5 @@ services:
         generateValue: true
       - key: DATABASE_URL
         sync: false
-      - key: SUPABASE_URL
-        sync: false
-      - key: SUPABASE_SECRET_KEY
-        sync: false
       - key: BOOTSTRAP_TOKEN
         sync: false
